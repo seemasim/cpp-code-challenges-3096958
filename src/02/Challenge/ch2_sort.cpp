@@ -7,19 +7,39 @@
 // Don't use a sorting function from a library.
 
 #include <iostream>
-
-// sort_array()
+using namespace std;
+// sort_array() using quicksort algorithm
 // Summary: This function receives an array of integers and sorts it in ascending order.
 // Arguments:
 //           arr: A pointer acting as the array to sort.
 //           n: The size of the array.
 // Returns: A boolean value: True on success, false otherwise.
-bool sort_array(int *arr, int n){
+int partition(int *arr, int low, int hi){
+    int pi = arr[hi];
+    int i = (low-1);
+    for(int j=low;j<=(hi-1);j++){
+        if(arr[j]<pi){
+            i++;
+            //swap arr[i] and arr[j]
+            swap(arr[i],arr[j]);
+        }        
+    }
+    //swap arr[i+1] and arr[hi]
+    swap(arr[i+1],arr[hi]);
+    return (i+1);
+}
+
+void sort_array(int *arr, int low, int hi){
 
     // Write your code here
-
-    return false;
+    if(low<hi){
+        int pi=partition(arr,low,hi);
+        sort_array(arr,low,pi-1);
+        sort_array(arr,pi+1,hi);
+    }
+    
 }
+
 
 // Main function
 int main(){
@@ -33,7 +53,7 @@ int main(){
         std::cout << array[i] << " ";
     std::cout << "]" << std::endl << std::endl << std::flush;
 
-    sort_array(array, len); // Sort the array
+    sort_array(array, 0, 6); // Sort the array
 
     // Print the sorted array
     std::cout << "  Sorted Array: [ ";
