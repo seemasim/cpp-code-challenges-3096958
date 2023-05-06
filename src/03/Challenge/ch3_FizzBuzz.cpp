@@ -6,7 +6,7 @@
 // The user enters the last number in the sequence.
 
 #include <iostream>
-
+using namespace std;
 // FizzBuzz, main()
 // Summary: This application runs on the main function.
 int main(){
