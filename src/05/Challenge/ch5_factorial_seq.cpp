@@ -16,7 +16,7 @@
 // Returns: n!, the last calculated factorial.
 int print_factorials(int n){
     
-    // Write your code here
+    // Seema's Solution
    int result;
     if(n==0){
         result=1;
